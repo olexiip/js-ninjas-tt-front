@@ -14,7 +14,6 @@ const useProvideAuth = (props) => {
         goToHomePage();
     };
     const logOutF = async () => {
-        //console.log("logOutF clear LS");
         localStorage.clear();
         goToHomePage();
     };
@@ -28,30 +27,13 @@ const useProvideAuth = (props) => {
 
 
 export const ProvideAuth = ({children}) => {
-    const LSLang = () => {
-        const LSL1 =  localStorage.getItem("lang");
-        if (LSL1 === "UA") {
-            return LSL1;
-        }
-        if (LSL1 === "EN") {
-            return LSL1;
-        }
-        if (!LSL1) {
-            localStorage.setItem("lang", "UA")
-            return "UA"
-        }
-    };
-
-    const [langS, setLang] = useState(LSLang());
-    const setLangWrapper = (newLang) => {
-        localStorage.setItem("lang", newLang)
-        setLang(newLang);
-    }
-    
+   
     const auth = useProvideAuth();
-    return <authContext.Provider value={auth}>
-        {children}
-        </authContext.Provider>;
+    return (
+        <authContext.Provider value={auth}>
+            {children}
+        </authContext.Provider>
+        );
 };
 
 export const useAuth = () => {
