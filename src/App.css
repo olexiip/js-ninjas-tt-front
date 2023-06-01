@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+body {
+  font-size:large;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+textarea:focus, input:focus{
+  outline: 1px solid rgb(134, 18, 18);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.header {
+  background-color: #ffffff;
+  width: 100%;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(0, 0, 0);
+  padding: 0px;
+  display: flex;
+  
 }
 
-.App-link {
-  color: #61dafb;
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.usermenu {
+  margin-left: auto;
+  margin-right: 2%;
+  background-color: rgb(255, 255, 255);
 }
+
+hr {
+  width: 95%;
+  margin-top: 2px;
+  margin-bottom: 5%;
+}
+
+.logo {
+  background-color: #ffffff;
+  margin: 5px;
+  margin-left: 2%;
+}
+
+button{
+  background-color: #ffffff;
+  margin: 5px;
+  padding: 8px 12px 8px 12px;
+  border-radius: 7px;
+  border-width: 1px;
+  border: 1px solid rgb(201, 201, 201);
+  background-color: rgb(255, 255, 255);
+}
+
+
+.login-form {
+  margin: auto;
+  padding: 17px 0px 17px 0px;
+  border-radius: 16px;
+  background-color: rgb(255, 255, 255);
+  width: 360px;
+  border: 1px solid rgb(207, 207, 207);
+  box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.75);
+}
+
+input, .login-button {
+    margin: 0px 5px 0px 15px;
+    width: 295px;
+    padding: 15px 13px 13px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: medium;
+    border: 1px solid rgb(207, 207, 207);
+}
+.login-button {
+  width: 325px;
+  margin-bottom: 0px;
+}
+.pass-wrapper {
+    position: relative;
+}
+.show-pass {
+    user-select: none;
+    font-size: smaller;
+    position: absolute;
+    top: 14px;
+    right: 35px;
+}
+
+.bad-field{
+    border-style: solid;
+    border-color: hsl(4, 100%, 83%);
+    border-width: 1px;
+    background-color:rgb(255, 236, 230);
+}
+

@@ -72,9 +72,15 @@ const Header = () => {
     return (
         <div>
             <div className="header">
-                <div className="logo"><NavLink to="/home">HEADER logo</NavLink></div> 
-                <Usermenu auth={state} />
+                <div className="logo">
+                    <NavLink to="/home">Home</NavLink>
+                </div> 
+                <div className="usermenu">
+                    <Usermenu auth={state} />
+                </div>
+                
             </div>
+            <hr/>
             <Outlet/>
         </div>
     )
