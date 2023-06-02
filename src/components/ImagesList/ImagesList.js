@@ -1,20 +1,8 @@
-import ListItem from "../ListItem/ListItem.js"
-import EditItem from "../EditItem/EditItem.js"
-import ShowItem from "../ShowItemModal/ShowItem.js"
-import React, {useState, useEffect} from "react";
-import CreateItem from "../CreateItem/CreateItem.js";
-import useApi from "../Hooks/useApi.js";
-import Pages from '../Pagination/pagination.js';
-import basicImg from "../img/plus.png";
-
-const List = () => {  
-  console.log(">>>List")
-  const api = useApi();
+const ImagesList = () => {  
+  console.log(">>>ImagesList")
   const pagLimit = 10;
 
-    useEffect(()=>{
-        getItems(1);
-    }, []);
+
 
   const [updatedList, updateListState] = useState({itemList:[], page:1, total:undefined, limit: pagLimit});
   const [currentModalEdit, updateModal] = useState({});
@@ -211,4 +199,4 @@ const List = () => {
     )
 }
 
-export default List;
+export default ImagesList;

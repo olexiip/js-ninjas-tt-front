@@ -50,7 +50,7 @@ const useApi = () => {
             if (e?.response?.status===401) {
 
             }
-            throw e;
+            console.log(e);
         }
     };
 
@@ -62,6 +62,11 @@ const useApi = () => {
         check: (data) => axiosReq("POST", "auth/check", data),
         refresh: refreshAuto,
 
+
+        getList: (data) => axiosReq("GET", "items/getall", data),
+        getListFree: (data) => axiosReq("GET", "items/getallFree", data),
+        createItem: (data) => axiosReq("POST", "items/addItem", data),
+        update: (data) => axiosReq("POST", "items/update", data),
     };
 }
 export default useApi;

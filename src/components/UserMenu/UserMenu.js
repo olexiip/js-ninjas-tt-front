@@ -2,6 +2,7 @@ import { useAuth } from "../Hooks/useAuth";
 import { NavLink } from "react-router-dom";
 import useApi from "../Hooks/useApi";
 
+
 const Usermenu = (props) => {
     
 
@@ -9,19 +10,17 @@ const Usermenu = (props) => {
     const auth = useAuth();
     const api = useApi();
     const logOut = async () => {
-        console.log("logOutF");
         await api.logOut();
         auth.logOutF();
     }
-    //console.log(auth);
 
         if (props.auth==="USER") {
             console.log("return user menu");
             return (
                 <div className="auth-status">
-                            <NavLink to="/me"><button>{auth.storedData.user.userName}</button></NavLink>
+                            <div className="menuLink"><NavLink to="/me">{auth.storedData.user.userName}</NavLink></div>
                             
-                            <button onClick={logOut}>{"logout"}</button>
+                            <a className="menuLink" onClick={logOut}>{"logout"}</a>
                 </div>
             )
         }
@@ -30,8 +29,8 @@ const Usermenu = (props) => {
         console.log("return logIn menu");
         return (
             <div className="auth-status">
-                    <NavLink to="/login"><button>{"login"}</button></NavLink>
-                    <NavLink to="/register"><button>{"register"}</button></NavLink>
+                    <div className="menuLink"><NavLink to="/login">{"login"}</NavLink></div>
+                    <div className="menuLink"><NavLink to="/register">{"register"}</NavLink></div>
             </div>
         );
 

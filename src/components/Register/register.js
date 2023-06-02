@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useApi from "../Hooks/useApi";
 import { useNavigate } from "react-router-dom";
-//import "./styles.css"  
 
 const RegisterForm = () => {
     const api = useApi();
@@ -35,13 +34,12 @@ const RegisterForm = () => {
     const onSubmitkHandler = async (e) => {
         
         e.preventDefault();
-        //console.log(`login: ${currentFormFields.userEmail} pass: ${currentFormFields.userPass}`)
-        //auth.loginF({login : currentFormFields.userEmail, pass : currentFormFields.userPass})
+
         const showErr = ()=> {
             showToastERR("Server error");
         }
         const req = await api.register(currentFormFields).catch(showErr);
-        //console.log(req.data.user);
+
         if (req?.data?.user?.id) {
             showToastMSG();
             const redirect = ()=> {
@@ -53,12 +51,10 @@ const RegisterForm = () => {
             return [];
         }
         if (req?.data?.res=== "email already in use") {
-            //return alert("email already in use");
+
             showToastERR("email already in use");
         }
         
-        //alert("some error((");
-        //console.log(req.data);
 
     }
 
@@ -143,6 +139,7 @@ const RegisterForm = () => {
                 </div>
                 <input 
                     type="text" 
+                    className="auth"
                     value={currentFormFields.userDateOfBirth} 
                     placeholder="date of birth" 
                     onChange={(e) => onFormChange("userDateOfBirth", e)}

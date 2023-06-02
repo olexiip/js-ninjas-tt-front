@@ -1,43 +1,6 @@
-body {
-  font-size:large;
-}
 
 textarea:focus, input:focus{
   outline: 1px solid rgb(134, 18, 18);
-}
-
-.header {
-  background-color: #ffffff;
-  width: 100%;
-  font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
-  padding: 0px;
-  display: flex;
-  
-}
-
-a {
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-}
-
-
-.usermenu {
-  margin-left: auto;
-  margin-right: 2%;
-  background-color: rgb(255, 255, 255);
-}
-
-hr {
-  width: 95%;
-  margin-top: 2px;
-  margin-bottom: 5%;
-}
-
-.logo {
-  background-color: #ffffff;
-  margin: 5px;
-  margin-left: 2%;
 }
 
 button{
@@ -50,7 +13,6 @@ button{
   background-color: rgb(255, 255, 255);
 }
 
-
 .login-form {
   margin: auto;
   padding: 17px 0px 17px 0px;
@@ -61,35 +23,174 @@ button{
   box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.75);
 }
 
-input, .login-button {
-    margin: 0px 5px 0px 15px;
-    width: 295px;
-    padding: 15px 13px 13px 15px;
-    margin-bottom: 8px;
-    border-radius: 10px;
-    border-width: 0px;
-    font-size: medium;
-    border: 1px solid rgb(207, 207, 207);
+.auth, .login-button, .inputNewItem {
+  font-size: 22px;
+  margin: 0px 5px 0px 15px;
+  width: 327px;
+  padding: 15px 13px 13px 15px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border-width: 0px;
+  border: 1px solid rgb(207, 207, 207);
 }
+
 .login-button {
   width: 325px;
   margin-bottom: 0px;
 }
 .pass-wrapper {
-    position: relative;
+  position: relative;
 }
 .show-pass {
-    user-select: none;
-    font-size: smaller;
-    position: absolute;
-    top: 14px;
-    right: 35px;
+  user-select: none;
+  font-size: 18px;
+  position: absolute;
+  top: 16px;
+  right: 35px;
 }
 
 .bad-field{
-    border-style: solid;
-    border-color: hsl(4, 100%, 83%);
-    border-width: 1px;
-    background-color:rgb(255, 236, 230);
+  border-style: solid;
+  border-color: hsl(4, 100%, 83%);
+  border-width: 1px;
+  background-color:rgb(255, 236, 230);
 }
 
+
+.inputNewItem {
+  width: 92%;
+}
+
+.mybtn {
+  font-size: 22px;
+  padding: 8px 12px 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border-width: 0px;
+  border: 1px solid rgb(207, 207, 207);
+}
+
+.myinput{
+  font-size: 22px;
+  margin: 0px 5px 0px 15px;
+  width: 92%;
+  padding: 15px 13px 13px 15px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border-width: 0px;
+  border: 1px solid rgb(207, 207, 207);
+}
+
+
+.herobasicimg {
+  width: 20px;
+  height: 20px;
+}
+
+.ListItem {
+  position: relative;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 16px;
+  width: 200px;
+  height: 250px;
+  margin: 15px;
+  background-color: #fff8f8;
+  /* box-shadow:
+  inset 0 -150px rgba(0, 0, 0, 0.4); Top Light Shadow */
+}
+
+.showing{
+  padding: 5px;
+  display:inline-block;
+  /* background-color: #e8ffff; */
+}
+
+.clickableArea {
+  border-radius: 16px;
+  width: 100%;
+  height: 250px;
+}
+.itemwrapper{
+  position: relative;
+  z-index: 2;
+  left: 0px;
+  top:0px;
+  width: 100%;
+}
+
+.ListHeroNickname, .ListHeroNicknamebg{
+  left: 0px;
+  top: 0px;
+  overflow-x:hidden;
+  padding: 5px 45px 5px 15px;
+  word-wrap: break-word;
+  font-size: 22px;
+  font-weight:700;
+  width: 200px;
+  
+  border-radius: 16px 16px 0px 0px;
+  border-bottom: 1px solid rgb(197, 197, 197);
+
+}
+
+
+
+.ListHeroNicknamebg {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  height: 99%;
+  z-index: 0;
+  background: rgba(228, 228, 228, 0.35);
+  backdrop-filter: blur(15px);
+}
+
+.ListHeroNickname{
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+.imgholder{
+  margin: 5px;
+  display:  inline-block;
+}
+
+.imgHolderShow {
+  width: 50px;
+
+}
+
+.imgShowMain{
+  width: 40px;
+}
+.editbtn {
+  z-index: 3;
+  position: absolute;
+  top: 5px;
+  left: 155px;
+  display: inline-block;
+  border: 1px solid rgb(161, 161, 161);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+
+
+.info-text {
+  font-size: 14px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.info-field {
+  font-size: 22px;
+  
+}

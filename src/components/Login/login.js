@@ -31,7 +31,6 @@ const LoginForm = () => {
         const showErr = ()=> {
             showToastERR("Server error");
         }
-        //console.log(`login: ${newEmailTyped} pass: ${newPassTyped}`)
         const loginResp = await api.logIn({email : newEmailTyped, userpass : newPassTyped}).catch(showErr);
         console.log(loginResp.data);
         if (loginResp.data.accesToken) {
@@ -42,7 +41,6 @@ const LoginForm = () => {
             showToastERR();
         }
         console.log("final")
-        //window.location.assign(window.location.pathname);
         
     }
 
@@ -56,9 +54,9 @@ const LoginForm = () => {
     return (
         <div>
             <form className="login-form" onSubmit={onSubmitkHandler}> 
-                <input type="text" value={newEmailTyped} className="inputLogin" placeholder="your email" onChange={onTypeEmailHandler}/>
+                <input type="text" value={newEmailTyped} className="auth" placeholder="your email" onChange={onTypeEmailHandler}/>
                 <br/>
-                <input type="password" value={newPassTyped} className="inputLogin" placeholder="your pass" onChange={onTypePassHandler}/>
+                <input type="password" value={newPassTyped} className="auth" placeholder="your pass" onChange={onTypePassHandler}/>
                 <br/>
                 <button className = "login-button" disabled={disabledLoginButton()} type="submit">login</button>
             </form>
