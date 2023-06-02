@@ -1,6 +1,5 @@
-
 import basicImg from "../img/unknown.png";
-import "./style.css"
+
 const ListItem = (props) => {
     console.log(props)
     const imgpbg = () => {
