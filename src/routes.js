@@ -5,6 +5,7 @@ import List from "./components/List/List.js";
 import HomePage from "./components/Homepage/Homepage.js";
 import Layout from "../src/components/Header/Header.js"
 import ProtectedRouter from "./components/ProtectedRoutes/ProtectedRouter.js";
+import UserPage from "../src/components/UserPage/UserPage.js";
 
 const MyRoutes = () => {
     return (
@@ -15,7 +16,8 @@ const MyRoutes = () => {
                     <Route path="login" element={<LoginForm/>}></Route>
                     <Route path="register" element={<RegisterForm/>}></Route>
                     <Route element={<ProtectedRouter/>}> 
-                        <Route path="/me" element={<List/>}></Route>
+                        <Route path="/me" element={<UserPage/>}></Route>
+                        <Route path="/heroes" element={<List/>}></Route>
                     </Route>
                     <Route path="*" element={<Navigate to="/home" replace={true}/>}></Route>
                 </Route>

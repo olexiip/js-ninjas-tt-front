@@ -31,13 +31,16 @@ const ListItem = (props) => {
                     backgroundRepeat: 'no-repeat'
                 }}
             > 
-                <div className="editbtn" onClick={editHandler}>edit</div>
-                <div onClick={clickhandler}>   
-                <div className="clickableArea">
-                        <div className="itemwrapper">
-                            <div className="ListHeroNickname" >{props.item.nickname}</div>
-                            <div className="ListHeroNicknamebg" ></div>
-                        </div>
+                
+                <div className="itemContainer">
+                    <div className="editbtn" onClick={editHandler}>edit</div>
+                        <div onClick={clickhandler}>   
+                            <div className="clickableArea">
+                                 <div className="itemwrapper">
+                                    <div className="ListHeroNickname" >{props.item.nickname}</div>
+                                    <div className="ListHeroNicknamebg" ></div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

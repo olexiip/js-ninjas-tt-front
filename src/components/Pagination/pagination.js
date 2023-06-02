@@ -21,10 +21,10 @@ const Pages = (props) => {
 
   return (
 	 
-    <div>
-		<hr/>
+    <div className="myPag">
+		  <hr/>
 
-      <Pagination>{items}</Pagination>
+      <Pagination className="myPag2">{items}</Pagination>
     </div>
   );
 };

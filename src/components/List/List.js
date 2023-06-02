@@ -10,7 +10,7 @@ import basicImg from "../img/plus.png";
 const List = () => {  
   console.log(">>>List")
   const api = useApi();
-  const pagLimit = 10;
+  const pagLimit = 5;
 
     useEffect(()=>{
         getItems(1);
@@ -153,7 +153,8 @@ const List = () => {
   const basicimage = "url(" + basicImg + ")";
 
     return (
-      <div className="List"> 
+      <div>
+        <div className="List"> 
 
           <div className="ListItem"
             style={{  
@@ -188,7 +189,7 @@ const List = () => {
               ))
               
           }
-          
+        </div>
           <Pages
             onChange={onChangePage}
             active={updatedList.page}

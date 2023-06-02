@@ -18,7 +18,8 @@ const Usermenu = (props) => {
             console.log("return user menu");
             return (
                 <div className="auth-status">
-                            <div className="menuLink"><NavLink to="/me">{auth.storedData.user.userName}</NavLink></div>
+                            <div className="menuLink"><NavLink to="/heroes">heroes</NavLink></div>
+                            <div className="menuLink"><NavLink to="/me">{"settings"}</NavLink></div>
                             
                             <a className="menuLink" onClick={logOut}>{"logout"}</a>
                 </div>

@@ -8,7 +8,7 @@ import Pages from '../Pagination/pagination.js';
 const List = () => {  
   console.log(">>>List")
   const api = useApi();
-  const pagLimit = 10;
+  const pagLimit = 6;
 
     useEffect(()=>{
         getItems(1);
@@ -64,10 +64,8 @@ const List = () => {
   //--------------------------------------------------------------|
 
     return (
+      <div>
       <div className="List"> 
-        Register and create ur own hero
-
-
 
           {
               updatedList.itemList.map((item)=>(
@@ -79,7 +77,7 @@ const List = () => {
               ))
               
           }
-          
+        </div>  
           <Pages
             onChange={onChangePage}
             active={updatedList.page}
