@@ -1,10 +1,8 @@
 import basicImg from "../img/unknown.png";
 
 const ListItem = (props) => {
-    console.log(props)
     const imgpbg = () => {
         if (props.item.mainImg==="") {
-            // console.log("false")
             const res = "url(" + basicImg + ")"
             return res;
         }
@@ -17,7 +15,7 @@ const ListItem = (props) => {
     }
 
     const editHandler = () => {
-        props.editItemHandler( props.item)
+        props.editItemHandler(props.item)
 
     }
 

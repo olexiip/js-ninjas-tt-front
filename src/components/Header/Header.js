@@ -8,23 +8,16 @@ import { useAuth } from "../Hooks/useAuth.js";
 import "./styles.css"
 
 const Header = () => {
-
-    console.log(">>>Header");
-
     const [state, updateState] = useState("LOADING...");
     const auth = useAuth();
     const api = useApi();
 
     const check = async () => {
-        console.log("start check auth")
         if (!auth?.storedData?.accesToken) {
-            console.log("LS empty > return login")
             return "LOGIN";
         }
-        console.log("start check auth with back end")
         const checkRes = await api.check();
         if(checkRes.data.res==="ok"){
-            console.log("auth ok")
         }
         return checkRes.data;
     }
@@ -42,7 +35,6 @@ const Header = () => {
         updateState(newMenu);
     }
     const logOute2 = () => {
-        console.log("check auth return error, >>> do logOute");
         auth.logOutF();
         update();
     }
@@ -54,11 +46,9 @@ const Header = () => {
 
 
     if (state === "LOADING...") {
-        console.log("return LOADING...");
         return (state);
     }
     if (state !== "LOADING...") {
-        console.log("return normal page");
     }
 
 
@@ -77,7 +67,5 @@ const Header = () => {
             <Outlet/>
         </div>
     )
-
-    
 }
 export default Header;

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const useApi = () => {
     const apiURL = process.env.REACT_APP_BacEnd || `http://localhost:3001`;
-    console.log(apiURL);
+    // console.log(apiURL);
     const refreshAuto = async () => {
             const newToken = await axios(`${apiURL}/auth/refresh`, {
                 method: "POST",
@@ -11,7 +11,7 @@ const useApi = () => {
             if (newToken?.data?.refreshToken) {
                 saveNewData(newToken.data);
             } else {
-                //console.log("refresh failed");
+                console.log("refresh failed");
             }  
 
     }
@@ -55,7 +55,6 @@ const useApi = () => {
     };
 
     return {
-        // auth
         register: (data) => axiosReq("POST", "auth/reg", data),
         logOut: (data) => axiosReq("POST", "auth/logOut", data),
         logIn: (data) => axiosReq("POST", "auth/login", data),
@@ -67,6 +66,7 @@ const useApi = () => {
         getListFree: (data) => axiosReq("GET", "items/getallFree", data),
         createItem: (data) => axiosReq("POST", "items/addItem", data),
         update: (data) => axiosReq("POST", "items/update", data),
+        delItem: (data) => axiosReq("DELETE", "items/delItem", data),
     };
 }
 export default useApi;

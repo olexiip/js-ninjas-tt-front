@@ -8,7 +8,6 @@ import Pages from '../Pagination/pagination.js';
 import basicImg from "../img/plus.png";
 
 const List = () => {  
-  console.log(">>>List")
   const api = useApi();
   const pagLimit = 5;
 
@@ -24,15 +23,12 @@ const List = () => {
   
   const getItems = async (page=1) => {
     const update = async (getTodoResp) => {
-      //console.log(getTodoResp.data);s
       updateListState(getTodoResp.data);
-      console.log("update list");
     }
     await api.getList({ limit: pagLimit, page: page}).then(update);
   }
     
   const deleteItem = async (clickedID) => {
-        console.log(`delete ${clickedID}`);
           await api.delItem({
             "id": clickedID,
             })
@@ -40,22 +36,17 @@ const List = () => {
   }
 
   const doneItem = async (clickedID, currStatus) => {
-        console.log(`doneItem ${clickedID}`);
-        console.log(`doneItem ${currStatus}`);
         await api.isComplited({
           "id": clickedID,
           "isComplited": !currStatus,
           })
           getItems();
   }
-    //--------------------------------------------------------------EDIT
     const handleClose = () => {
         updateModal({});
     }
     
     const handleSave = async (editableID, editedTitle) => {
-      console.log(`editableID ${editableID}`);
-      console.log(`editedTitle ${editedTitle}`);
       await api.update({
         "id": editableID,
         "editedItem": editedTitle,
@@ -65,79 +56,63 @@ const List = () => {
     }
 
     const editItemHandler = (item) => {
-      console.log("edit this item")
-      console.log(item)
         updateModal({show:true, item});
     }
     
     function showEditModal() {
-      console.log("currentModalEdit--------------------")
-      console.log(currentModalEdit)
         return (
             <EditItem 
             show={currentModalEdit.show} 
             item={currentModalEdit.item}
             handleClose = {handleClose} 
             handleSave={handleSave}
+            deleteItem={deleteItem} 
+
         ></EditItem>  
         )
     }
 
-
-        //--------------------------------------------------------------CREATE
         const handleCloseCreate = () => {
             updateCreateModal({show:false});
         }
         
         const handleSaveCreate = async (newItem) => {
-          // console.log(`new ${newItem}`);
-          // console.log(`ne################################################`);
           await api.createItem(newItem)
             getItems();
             updateCreateModal({show:false});
         }
     
         const createItemHandler = () => {
-            console.log(`createItemHandler`);
             updateCreateModal({show:true});
         }
         
         function showCreateModal() {
             return (
                 <CreateItem 
-                show={true}
-                handleClose = {handleCloseCreate} 
-                handleSave={handleSaveCreate}
+                  show={true}
+                  handleClose = {handleCloseCreate} 
+                  handleSave={handleSaveCreate}
             ></CreateItem>  
             )
         }
-  //--------------------------------------------------------------SHOW  
     const handleShowClose = () => {
       updateShowModal({});
   }
     const showShowModal = (props) => {
-      // console.log(props)
-      // console.log("show item")
-      // console.log(props)
       return (
         <ShowItem 
-        show={currentShowModal.show} 
-        _id={currentShowModal._id} 
-        item={currentShowModal.item}
-        handleClose = {handleShowClose} 
+          show={currentShowModal.show} 
+          _id={currentShowModal._id} 
+          item={currentShowModal.item}
+          handleClose = {handleShowClose} 
         > </ShowItem>  )
     };
     const showItemHandler = (item) => {
-      // console.log("item=======================")
-      // console.log(item)
-      //console.log("clicked Edit on item with ID " + editableID);
       updateShowModal({show:true, item:item});
-      //setTimeout(()=>{console.log(currentModal)}, 1000);
+
     }
-  //--------------------------------------------------------------PAGINATION
 
   const onChangePage = (page) => {
-    console.log(`page ${page}`)
     if (page === updatedList.page) {
       return;
     };
@@ -147,8 +122,6 @@ const List = () => {
   const getPagesCount = () => {
     return Math.ceil(updatedList.total / updatedList.limit);
   };
-  //--------------------------------------------------------------|
-  //console.log(updatedList.itemList);
 
   const basicimage = "url(" + basicImg + ")";
 
@@ -181,7 +154,6 @@ const List = () => {
                   <ListItem 
                       key={item._id} 
                       item={item} 
-                      deleteItem={deleteItem} 
                       editItemHandler={editItemHandler} 
                       showItemHandler={showItemHandler}
                       doneItem={doneItem} 

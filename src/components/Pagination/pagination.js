@@ -1,11 +1,8 @@
 import Pagination from "react-bootstrap/Pagination";
 
 const Pages = (props) => {
-	//console.log(props)
+
 	const { onChange, active, pages, maxButtons } = props;
-	//console.log("pagination conponent")
-	
-	
   let items = [];
 
   const startIndex = active - 1 || 1;

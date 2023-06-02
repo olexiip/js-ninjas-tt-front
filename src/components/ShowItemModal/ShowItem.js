@@ -3,16 +3,8 @@ import basicImg from "../img/unknown.png";
 
 const ShowItem = (props) => {
 
-    const imgpath = () => {
-        if (props.item.mainImg==="") {
-            // console.log("false")
-            return basicImg;
-        }
-    }
-
     const imgpbg = () => {
         if (props.item.mainImg==="") {
-            // console.log("false")
             const res = "url(" + basicImg + ")"
             return res;
         }
@@ -51,12 +43,8 @@ return (
                         </div>
                     </div>
 
-                    <div className="imgHolderShow">
-                        <img className="imgShowMain" src={imgpath()}/>
-                    </div>
-
                     <div className="info-text">{"nickname:"} </div>
-                    <div>{props.item.nickname} </div>
+                    <div className="info-field">{props.item.nickname} </div>
 
                     <div className="info-text">{"realName:"} </div>
                     <div className="info-field">{props.item.realName} </div>
@@ -70,19 +58,11 @@ return (
                     <div className="info-text">{"catchPhrase:"} </div>
                     <div className="info-field">{props.item.catchPhrase} </div>
 
-                    <div className="info-text">{"images:"} </div>
-
                     <div>{props.item.images} </div>
 
-
-                    <hr/>
-                    <div>{"Owner"} </div>
-                    <div>{"userName"}{" "}{"userSurname"}</div>
-                    <div> </div>
-                    <div>{"email"} </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button 
+                    <button className="mybtn"
                         onClick={()=>(props.handleClose())}
                     >{"close"}</button>
 

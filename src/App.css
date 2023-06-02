@@ -198,7 +198,7 @@ button{
 
 .info-field {
   font-size: 22px;
-  
+  margin-left: 25px;
 }
 
 
@@ -216,6 +216,19 @@ button{
   width: 100%;
 }
 .myPag2 {
-  align-items: center;
   justify-content: center;
 }
+
+.form-image-container {
+  margin-left: 10px;
+}
+
+
+
+.h2-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+

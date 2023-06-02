@@ -18,12 +18,10 @@ const RegisterForm = () => {
     const [showPass, setPassVisib] = useState(false);
 
     const showToastMSG = ()=> {
-        console.log("showToastERR");
         alert("redir to ligin page 2sec");
     } 
 
     const showToastERR = (errMsg)=> {
-        console.log("showToastERR");
         alert("REG ERR");
 
     } 
@@ -43,10 +41,8 @@ const RegisterForm = () => {
         if (req?.data?.user?.id) {
             showToastMSG();
             const redirect = ()=> {
-                console.log("redirect")
                 navigate("/login", {replace: true});
             }
-            console.log("click")
             setTimeout(redirect, 2000);
             return [];
         }

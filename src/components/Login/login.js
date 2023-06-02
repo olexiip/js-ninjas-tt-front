@@ -7,8 +7,6 @@ const LoginForm = () => {
     const auth = useAuth();
     const api = useApi();
 
-    console.log(auth)
-
     const [newEmailTyped, setNewEmailTyped] = useState("");
     
     const onTypeEmailHandler = (e) => {
@@ -27,20 +25,16 @@ const LoginForm = () => {
 
      const onSubmitkHandler = async (e) => {
         e.preventDefault();
-        console.log("click");
         const showErr = ()=> {
             showToastERR("Server error");
         }
         const loginResp = await api.logIn({email : newEmailTyped, userpass : newPassTyped}).catch(showErr);
-        console.log(loginResp.data);
         if (loginResp.data.accesToken) {
             return auth.loginF(loginResp.data);
         }
         if (loginResp.data.res === "bad login data") {
-            console.log("err")
             showToastERR();
         }
-        console.log("final")
         
     }
 

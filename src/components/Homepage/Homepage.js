@@ -4,9 +4,7 @@ import React, {useState, useEffect} from "react";
 import useApi from "../Hooks/useApi.js";
 import Pages from '../Pagination/pagination.js';
 
-
 const List = () => {  
-  console.log(">>>List")
   const api = useApi();
   const pagLimit = 6;
 
@@ -16,27 +14,18 @@ const List = () => {
 
   const [updatedList, updateListState] = useState({itemList:[], page:1, total:undefined, limit: pagLimit});
   const [currentShowModal, updateShowModal] = useState({});
-
-
   
   const getItems = async (page=1) => {
     const update = async (getTodoResp) => {
-      //console.log(getTodoResp.data);s
       updateListState(getTodoResp.data);
-      console.log("update list");
     }
     await api.getListFree({ limit: pagLimit, page: page}).then(update);
   }
-    
-        
-  //--------------------------------------------------------------SHOW  
+
     const handleShowClose = () => {
       updateShowModal({});
   }
     const showShowModal = (props) => {
-      // console.log(props)
-      // console.log("show item")
-      // console.log(props)
       return (
         <ShowItem 
         show={currentShowModal.show} 
@@ -48,10 +37,8 @@ const List = () => {
     const showItemHandler = (item) => {
       updateShowModal({show:true, item:item});
     }
-  //--------------------------------------------------------------PAGINATION
 
   const onChangePage = (page) => {
-    console.log(`page ${page}`)
     if (page === updatedList.page) {
       return;
     };
@@ -61,10 +48,12 @@ const List = () => {
   const getPagesCount = () => {
     return Math.ceil(updatedList.total / updatedList.limit);
   };
-  //--------------------------------------------------------------|
 
     return (
       <div>
+      <div className="h2-wrapper">
+        <h2>all created heroes)</h2>
+      </div>
       <div className="List"> 
 
           {

@@ -4,8 +4,6 @@ import {Modal} from "react-bootstrap";
 
 
 const CreateItem = (props) => {
-console.log("CreateItem ");
-console.log(props);
 const emptyItem={
     nickname: "",
     realName: "",
@@ -15,13 +13,6 @@ const emptyItem={
 }
 const [newItem, setNewItem] = useState(emptyItem); 
 const onTypeHandler = (e) => {
-    // console.log(e);
-    console.log(e.target.form.nickname.value);
-    console.log(e.target.form.realName.value);
-    console.log(e.target.form.originDescription.value);
-    console.log(e.target.form.superpowers.value);
-    console.log(e.target.form.catchPhrase.value);
-    // emptyItem.nickname = e.target.value;
     setNewItem({
         nickname : e.target.form.nickname.value,
         realName : e.target.form.realName.value,
@@ -29,10 +20,8 @@ const onTypeHandler = (e) => {
         superpowers : e.target.form.superpowers.value,
         catchPhrase : e.target.form.catchPhrase.value,
     })
-    console.log(newItem);
 }
 const onSubmitkHandler = (e) => {
-    console.log("submit----------------------")
     e.preventDefault();
     props.handleSave(newItem);
     setNewItem(emptyItem);

@@ -4,9 +4,6 @@ import useApi from "../Hooks/useApi";
 
 
 const Usermenu = (props) => {
-    
-
-    console.log(">>>Usermenu")
     const auth = useAuth();
     const api = useApi();
     const logOut = async () => {
@@ -15,7 +12,6 @@ const Usermenu = (props) => {
     }
 
         if (props.auth==="USER") {
-            console.log("return user menu");
             return (
                 <div className="auth-status">
                             <div className="menuLink"><NavLink to="/heroes">heroes</NavLink></div>
@@ -25,9 +21,6 @@ const Usermenu = (props) => {
                 </div>
             )
         }
-
-
-        console.log("return logIn menu");
         return (
             <div className="auth-status">
                     <div className="menuLink"><NavLink to="/login">{"login"}</NavLink></div>

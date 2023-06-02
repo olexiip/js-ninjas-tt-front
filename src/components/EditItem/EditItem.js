@@ -4,8 +4,6 @@ import {Modal} from "react-bootstrap";
 import imageCompression from 'browser-image-compression';
 
 const EditItem = (props) => {
-console.log("EditItem ------------");
-console.log(props);
 const emptyItem={
     nickname: "",
     realName: "",
@@ -16,13 +14,6 @@ const emptyItem={
 const [newItem, setNewItem] = useState(props.item); 
 const [selectedImage, setSelectedImage] = useState(props.item.mainImg);
 const onTypeHandler = (e) => {
-    // console.log(e);
-    console.log(e.target.form.nickname.value);
-    console.log(e.target.form.realName.value);
-    console.log(e.target.form.originDescription.value);
-    console.log(e.target.form.superpowers.value);
-    console.log(e.target.form.catchPhrase.value);
-    // emptyItem.nickname = e.target.value;
     setNewItem({
         nickname : e.target.form.nickname.value,
         realName : e.target.form.realName.value,
@@ -30,7 +21,6 @@ const onTypeHandler = (e) => {
         superpowers : e.target.form.superpowers.value,
         catchPhrase : e.target.form.catchPhrase.value,
     })
-    console.log(newItem);
 }
 
 const onSubmitkHandler = (e) => {
@@ -50,31 +40,29 @@ const handleImageChange = async (event) => {
     const file = event.target.files[0];
     
     const options = {
-        maxSizeMB: 0.5,
-        maxWidthOrHeight: 300,
+        maxSizeMB: 0.08,
+        maxWidthOrHeight: 250,
         useWebWorker: true
       }
       try {
         const compressedFile = await imageCompression(file, options);
-        console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); 
-        console.log(`compressedFile size ${compressedFile.size / 500 / 500} MB`); 
-        
-
         const reader = new FileReader();
   
         reader.onloadend = () => {
           const base64Image = reader.result;
           setSelectedImage(base64Image);
         };
-      
         reader.readAsDataURL(compressedFile);
-        console.log(selectedImage)
-
       } catch (error) {
         console.log(error);
       }
-
   };
+  const onDeleteHandler = (e) => {
+    e.preventDefault();
+    props.deleteItem(props.item._id);
+    setNewItem(emptyItem);
+    props.handleClose()
+  }
 
   const imgforprev = "url(" + selectedImage + ")";
 
@@ -135,31 +123,32 @@ return (
                 <div className="imageUploader">
                     <input className="myinput" type="file" accept="image/*" onChange={handleImageChange} />
                 </div>
+                <div className="form-image-container">
+                    <div className="ListItem" 
 
-                <div className="ListItem" 
-
-                    style={{  
-                        backgroundImage: imgforprev,
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat'
-                    }}
-                > 
-                    <div>   
-                        <div className="itemwrapper">
+                        style={{  
+                            backgroundImage: imgforprev,
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat'
+                        }}
+                    > 
+                        <div>   
                             <div className="itemwrapper">
-                                <div className="ListHeroNickname" >{newItem.nickname}</div>
-                                <div className="ListHeroNicknamebg" ></div>
+                                <div className="itemwrapper">
+                                    <div className="ListHeroNickname" >{newItem.nickname}</div>
+                                    <div className="ListHeroNicknamebg" ></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
 
-
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className="mybtn"
+                    <button className="mybtn" 
+                        onClick={onDeleteHandler}
                         disabled={validation()} 
                     >{"delete"}</button>
                     <button className="mybtn"
