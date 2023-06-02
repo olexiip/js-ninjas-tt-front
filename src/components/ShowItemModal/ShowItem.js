@@ -1,18 +1,17 @@
-import { useState } from "react"
 import {Modal} from "react-bootstrap";
 import basicImg from "../img/unknown.png";
 
 const ShowItem = (props) => {
 
     const imgpath = () => {
-        if (props.item.mainImg=="") {
+        if (props.item.mainImg==="") {
             // console.log("false")
             return basicImg;
         }
     }
 
     const imgpbg = () => {
-        if (props.item.mainImg=="") {
+        if (props.item.mainImg==="") {
             // console.log("false")
             const res = "url(" + basicImg + ")"
             return res;

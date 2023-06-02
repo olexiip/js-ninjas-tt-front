@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react"
 import {Modal} from "react-bootstrap";
 import imageCompression from 'browser-image-compression';
-import basicImg from "../img/plus.png";
 
 const EditItem = (props) => {
 console.log("EditItem ------------");

@@ -31,14 +31,6 @@ const List = () => {
     await api.getList({ limit: pagLimit, page: page}).then(update);
   }
     
-  const createHandler = async (newItemTitle) => {
-        await api.addItem({
-          "text": newItemTitle,
-          })
-          getItems(1);
-        //console.log("add " + newItemTitle)
-  }
-    
   const deleteItem = async (clickedID) => {
         console.log(`delete ${clickedID}`);
           await api.delItem({

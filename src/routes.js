@@ -3,7 +3,6 @@ import LoginForm from "./components/Login/login.js";
 import RegisterForm from "./components/Register/register.js";
 import List from "./components/List/List.js";
 import HomePage from "./components/Homepage/Homepage.js";
-import UserPage from "./components/UserPage/UserPage.js";
 import Layout from "../src/components/Header/Header.js"
 import ProtectedRouter from "./components/ProtectedRoutes/ProtectedRouter.js";
 
