@@ -40,12 +40,14 @@ const handleImageChange = async (event) => {
     const file = event.target.files[0];
     
     const options = {
-        maxSizeMB: 0.08,
-        maxWidthOrHeight: 250,
+        maxSizeMB: 5,
+        maxWidthOrHeight: 550,
         useWebWorker: true
       }
       try {
         const compressedFile = await imageCompression(file, options);
+        // console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); 
+        // console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); 
         const reader = new FileReader();
   
         reader.onloadend = () => {
