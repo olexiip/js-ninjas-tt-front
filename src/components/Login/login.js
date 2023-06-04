@@ -8,11 +8,13 @@ const LoginForm = () => {
     const api = useApi();
 
     const [newEmailTyped, setNewEmailTyped] = useState("");
+    const [newPassTyped, setNewPassTyped] = useState("");
     
+
     const onTypeEmailHandler = (e) => {
         setNewEmailTyped(e.target.value);
     } 
-    const [newPassTyped, setNewPassTyped] = useState("");
+
     const onTypePassHandler = (e) => {
         setNewPassTyped(e.target.value);
     };
@@ -20,22 +22,21 @@ const LoginForm = () => {
     const showToastERR = (errMsg)=> {
         const msg = (errMsg?errMsg:"auth failed");
         alert(msg);
-
     } 
 
-     const onSubmitkHandler = async (e) => {
+    const onSubmitkHandler = async (e) => {
         e.preventDefault();
         const showErr = ()=> {
             showToastERR("Server error");
         }
         const loginResp = await api.logIn({email : newEmailTyped, userpass : newPassTyped}).catch(showErr);
-        if (loginResp.data.accesToken) {
+        if (loginResp.data.res === "bad login data") {
+            showToastERR("access denied");
+        }
+        if (loginResp?.data?.accesToken) {
             return auth.loginF(loginResp.data);
         }
-        if (loginResp.data.res === "bad login data") {
-            showToastERR();
-        }
-        
+
     }
 
     const disabledLoginButton = () => {

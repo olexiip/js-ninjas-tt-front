@@ -16,7 +16,10 @@ const List = () => {
   const [currentShowModal, updateShowModal] = useState({});
   
   const getItems = async (page=1) => {
-     
+    const update = (getTodoResp) => {
+      console.log(getTodoResp);
+      if(getTodoResp?.hasOwnProperty('data')) {
+        updateListState(getTodoResp?.data);
       }
       console.log("no data")
     }
