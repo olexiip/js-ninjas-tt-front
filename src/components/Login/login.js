@@ -29,14 +29,23 @@ const LoginForm = () => {
         const showErr = ()=> {
             showToastERR("Server error");
         }
-        const loginResp = await api.logIn({email : newEmailTyped, userpass : newPassTyped}).catch(showErr);
-        if (loginResp.data.res === "bad login data") {
-            showToastERR("access denied");
-        }
-        if (loginResp?.data?.accesToken) {
-            return auth.loginF(loginResp.data);
-        }
 
+        try {
+            const loginResp = await api.logIn({email : newEmailTyped, userpass : newPassTyped});
+
+            if (loginResp?.data?.res === "bad login data") {
+                showToastERR("access denied");
+            }
+            if (loginResp.message) {
+                showToastERR(loginResp.message);
+            }
+            if (loginResp?.data?.accesToken) {
+                return auth.loginF(loginResp.data);
+            }
+        } catch (e) {
+            console.log(e);
+            showToastERR("Something went wrong...");
+        }
     }
 
     const disabledLoginButton = () => {
