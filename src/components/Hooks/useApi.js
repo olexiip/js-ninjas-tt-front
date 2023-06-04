@@ -3,6 +3,7 @@ import axios from "axios";
 const useApi = () => {
     const apiURL = process.env.REACT_APP_BacEnd || `http://localhost:3001`;
     // console.log(apiURL);
+
     const refreshAuto = async () => {
             const newToken = await axios(`${apiURL}/auth/refresh`, {
                 method: "POST",
@@ -10,45 +11,48 @@ const useApi = () => {
             })
             if (newToken?.data?.refreshToken) {
                 saveNewData(newToken.data);
+                return newToken.data.accesToken;
             } else {
                 console.log("refresh failed");
-            }  
-
+            }
     }
 
     const saveNewData = (userData) => {
-        const oldData = JSON.parse(localStorage.getItem("user"));
-        const newData = JSON.stringify({...oldData, ...userData});
-        localStorage.setItem("user", newData);
-
-        return {"ok":"ok"};
+        try {
+            const oldData = JSON.parse(localStorage.getItem("user"));
+            const newData = JSON.stringify({...oldData, ...userData});
+            localStorage.setItem("user", newData);
+        } catch (e) {
+            console.log(e);
+        }
     }
 
+    const try2 = async (reqParams, newToken) => {
+        reqParams.headers = {...reqParams.headers, Authorization: `Bearer ${newToken}`};
+        const resp2 = await axios(reqParams);  
+        return resp2;
+    }
 
     const axiosReq = async (method, url, data, headers) => {
-        try {
-            const token = JSON.parse(localStorage.getItem("user"))?.accesToken
-            const params = method === "GET"? data : null;
-            const body = method !== "GET"? data : null;
-            const reqParams = {
-                method,
-                params,
-                data: body,
-                headers: {...headers, Authorization: `Bearer ${token}`}
-            };
-            
-            const resp = await axios(`${apiURL}/${url}`, reqParams);  
+        
+        const token = JSON.parse(localStorage.getItem("user"))?.accesToken
+        const params = method === "GET"? data : null;
+        const body = method !== "GET"? data : null;
+        const reqParams = {
+            method,
+            params,
+            data: body,
+            headers: {...headers, Authorization: `Bearer ${token}`}
+        };
 
-            if (resp.data?.res === "auth error2") {
-                await refreshAuto();
-                reqParams.headers = {...headers, Authorization: `Bearer ${JSON.parse(localStorage.getItem("user"))?.accesToken}`};
-                const try2 = await axios(`${apiURL}/${url}`, reqParams);
-                return try2;
-            }
+        try {
+            const resp = await axios(`${apiURL}/${url}`, reqParams);  
             return resp;
         } catch (e) {
-            if (e?.response?.status===401) {
-
+            if (e?.response?.data.res==="auth error2" ){
+                const newToken = await refreshAuto();
+                const resp2 = await try2(reqParams, newToken);
+                return resp2;
             }
             console.log(e);
         }
