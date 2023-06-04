@@ -16,15 +16,15 @@ const List = () => {
   const [currentShowModal, updateShowModal] = useState({});
   
   const getItems = async (page=1) => {
-    const update = (getTodoResp) => {
-      console.log(getTodoResp);
-      if(getTodoResp?.hasOwnProperty('data')) {
-        updateListState(getTodoResp?.data);
+    try {
+      const getTodoResp = await api.getListFree({ limit: pagLimit, page: page});;
+      if (getTodoResp?.data) {
+        updateListState(getTodoResp.data);
       }
-      console.log("no data")
+    } catch (e) {
+      console.log(e);
     }
-    await api.getListFree({ limit: pagLimit, page: page}).then(update);
-  }
+}
 
     const handleShowClose = () => {
       updateShowModal({});
