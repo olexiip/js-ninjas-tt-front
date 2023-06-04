@@ -55,6 +55,7 @@ const useApi = () => {
                 return resp2;
             }
             console.log(e);
+            return e
         }
     };
 
