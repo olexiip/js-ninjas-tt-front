@@ -16,8 +16,9 @@ const List = () => {
   const [currentShowModal, updateShowModal] = useState({});
   
   const getItems = async (page=1) => {
-    const update = async (getTodoResp) => {
-      updateListState(getTodoResp.data);
+     
+      }
+      console.log("no data")
     }
     await api.getListFree({ limit: pagLimit, page: page}).then(update);
   }
@@ -42,7 +43,9 @@ const List = () => {
     if (page === updatedList.page) {
       return;
     };
-    getItems(page);
+    const fff  = getItems(page);
+    console.log(fff)
+    return fff;
   };
 
   const getPagesCount = () => {
@@ -57,7 +60,7 @@ const List = () => {
       <div className="List"> 
 
           {
-              updatedList.itemList.map((item)=>(
+              updatedList?.itemList.map((item)=>(
                   <ListItem 
                       key={item._id} 
                       item={item} 
