@@ -22,10 +22,14 @@ const List = () => {
 
   
   const getItems = async (page=1) => {
-    const update = async (getTodoResp) => {
-      updateListState(getTodoResp.data);
-    }
-    await api.getList({ limit: pagLimit, page: page}).then(update);
+      try {
+        const getTodoResp = await api.getList({ limit: pagLimit, page: page});;
+        if (getTodoResp?.data) {
+          updateListState(getTodoResp.data);
+        }
+      } catch (e) {
+        console.log(e);
+      }
   }
     
   const deleteItem = async (clickedID) => {
@@ -142,6 +146,7 @@ const List = () => {
                     <div className="itemwrapper">
                         <div className="ListHeroNickname" >{"add hero"}</div>
                         <div className="ListHeroNicknamebg" ></div>
+                        
                     </div>
                 </div>
             </div>
