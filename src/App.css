@@ -95,14 +95,16 @@ button{
   height: 250px;
   margin: 5px;
   background-color: #fff8f8;
-  /* box-shadow:
-  inset 0 -150px rgba(0, 0, 0, 0.4); Top Light Shadow */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+
 }
 
 .showing{
   padding: 5px;
   display:inline-block;
-  /* background-color: #e8ffff; */
 }
 
 .clickableArea {

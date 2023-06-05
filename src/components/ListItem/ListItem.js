@@ -1,6 +1,7 @@
 import basicImg from "../img/unknown.png";
 
 const ListItem = (props) => {
+
     const imgpbg = () => {
         if (props.item.mainImg==="") {
             const res = "url(" + basicImg + ")"
@@ -20,16 +21,9 @@ const ListItem = (props) => {
     }
 
     if (props.hasOwnProperty("editItemHandler")) {
-        return (
-            <div className="ListItem"
-                style={{  
-                    backgroundImage: imgpbg(),
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}
-            > 
-                
+
+    return (
+            <div className="ListItem" style={{backgroundImage: imgpbg()}}>    
                 <div className="itemContainer">
                     <div className="editbtn" onClick={editHandler}>edit</div>
                         <div onClick={clickhandler}>   
@@ -42,19 +36,11 @@ const ListItem = (props) => {
                     </div>
                 </div>
             </div>
-    
         )
     }
 
     return (
-        <div className="ListItem"
-            style={{  
-                backgroundImage: imgpbg(),
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
-            }}
-        > 
+        <div className="ListItem" style={{backgroundImage: imgpbg()}}>
             <div onClick={clickhandler}>   
             <div className="clickableArea">
                     <div className="itemwrapper">

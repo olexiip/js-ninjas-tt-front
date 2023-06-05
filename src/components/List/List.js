@@ -136,9 +136,6 @@ const List = () => {
           <div className="ListItem"
             style={{  
                 backgroundImage: basicimage,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
             }}
         > 
             <div onClick={createItemHandler}>   
@@ -146,7 +143,6 @@ const List = () => {
                     <div className="itemwrapper">
                         <div className="ListHeroNickname" >{"add hero"}</div>
                         <div className="ListHeroNicknamebg" ></div>
-                        
                     </div>
                 </div>
             </div>
