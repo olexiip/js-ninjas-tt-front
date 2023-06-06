@@ -20,11 +20,12 @@ return (
             backdrop="static"
             keyboard={false}
         >
-            <form >    
+            <form className="myModal">    
                 <Modal.Header closeButton>
                     <Modal.Title>{"Hero info"}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <div className="imageHolder">
                     <div className="ListItem"
                         style={{  
                             backgroundImage: imgpbg(),
@@ -42,20 +43,17 @@ return (
                             </div>
                         </div>
                     </div>
-
-                    <div className="info-text">{"nickname:"} </div>
-                    <div className="info-field">{props.item.nickname} </div>
-
-                    <div className="info-text">{"realName:"} </div>
+                    </div>
+                    <div className="info-text name">{"real name :"} </div>
                     <div className="info-field">{props.item.realName} </div>
 
-                    <div className="info-text">{"superpowers:"} </div>
+                    <div className="info-text powers">{"super powers :"} </div>
                     <div className="info-field">{props.item.superpowers} </div>
 
-                    <div className="info-text">{"originDescription:"} </div>
+                    <div className="info-text origin">{"origin :"} </div>
                     <div className="info-field">{props.item.originDescription} </div>
 
-                    <div className="info-text">{"catchPhrase:"} </div>
+                    <div className="info-text phrase">{"catch phrase :"} </div>
                     <div className="info-field">{props.item.catchPhrase} </div>
 
                     <div>{props.item.images} </div>
