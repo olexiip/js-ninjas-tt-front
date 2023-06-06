@@ -37,8 +37,8 @@ const RegisterForm = () => {
             showToastERR("Server error");
         }
         const req = await api.register(currentFormFields).catch(showErr);
-
-        if (req?.data?.user?.id) {
+        if (req?.data?.user) {
+            console.log(req.data);
             showToastMSG();
             const redirect = ()=> {
                 navigate("/login", {replace: true});
