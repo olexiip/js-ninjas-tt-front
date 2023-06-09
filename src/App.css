@@ -190,15 +190,20 @@ button{
   padding: 4px;
 }
 
+.mainContainer {
+  display: grid;
+  place-items: center;
+  
+}
 
 .List {
+  grid-gap: 10px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 210px));
-  grid-gap: 0px;
-  justify-items: center;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 650px;
+  place-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  width: 100%;
+  min-width: 250px;
+  max-width: 700px;
 }
 
 .myPag {

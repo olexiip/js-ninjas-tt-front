@@ -56,7 +56,7 @@ const List = () => {
   };
 
     return (
-      <div>
+      <div className="mainContainer">
       <div className="h2-wrapper">
         <h2>all created heroes)</h2>
       </div>

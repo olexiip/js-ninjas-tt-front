@@ -130,7 +130,7 @@ const List = () => {
   const basicimage = "url(" + basicImg + ")";
 
     return (
-      <div>
+      <div className="mainContainer">
         <div className="List"> 
 
           <div className="ListItem"

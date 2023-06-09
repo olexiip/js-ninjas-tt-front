@@ -14,7 +14,7 @@ const Usermenu = (props) => {
         if (props.auth==="USER") {
             return (
                 <div className="auth-status">
-                            <div className="menuLink"><NavLink to="/heroes">heroes</NavLink></div>
+                            <div className="menuLink"><NavLink to="/heroes">my heroes</NavLink></div>
                             <div className="menuLink"><NavLink to="/me">{"settings"}</NavLink></div>
                             
                             <a className="menuLink" onClick={logOut}>{"logout"}</a>
