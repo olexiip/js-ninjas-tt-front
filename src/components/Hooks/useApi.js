@@ -46,7 +46,7 @@ const useApi = () => {
         };
 
         try {
-            const resp = await axios(`${apiURL}/${url}`, reqParams);  
+            const resp = await axios(`${apiURL}/${url}`, reqParams); 
             return resp;
         } catch (e) {
             if (e?.response?.data.res==="auth error2" ){
@@ -54,8 +54,9 @@ const useApi = () => {
                 const resp2 = await try2(reqParams, newToken);
                 return resp2;
             }
-            console.log(e);
-            return e
+            //console.log(e);
+            //window.location.reload();
+            // return e
         }
     };
 
@@ -72,6 +73,9 @@ const useApi = () => {
         createItem: (data) => axiosReq("POST", "items/addItem", data),
         update: (data) => axiosReq("POST", "items/update", data),
         delItem: (data) => axiosReq("DELETE", "items/delItem", data),
+
+        getImage: (data) => axiosReq("GET", "items/getImage", data),
+        uploadImage: (data) => axiosReq("POST", "items/newImage", data)
     };
 }
 export default useApi;

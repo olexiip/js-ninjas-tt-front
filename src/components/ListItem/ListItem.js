@@ -1,57 +1,79 @@
 import basicImg from "../img/unknown.png";
+import previmage from "../img/previmage.png";
+import useApi from "../Hooks/useApi";
+import { useState, useEffect } from "react";
 
 const ListItem = (props) => {
+  //console.log(props)
+  const api = useApi();
 
-    const imgpbg = () => {
-        if (props.item.mainImg==="") {
-            const res = "url(" + basicImg + ")"
-            return res;
-        }
-        const res = "url(" + props.item.mainImg + ")"
-        return res;
+  const [currImage, updImg] = useState(previmage);
+
+  useEffect(() => {
+    if (props.item.mainImg === "") {
+    } else {
+      const res = api.getImage({id: props.item.mainImg});
+      res.then(update);
     }
-    
-    const clickhandler = () => {
-        props?.showItemHandler(props.item);
+    }, []);
+
+  function update(data) {
+    if (data.data.img) {
+      updImg(data.data.img);
     }
+  }
 
-    const editHandler = () => {
-        props.editItemHandler(props.item)
-
+  const imgpbg = () => {
+    let res;
+    //console.log(currImage)
+    if (props.item.mainImg === "") {
+      res = "url(" + basicImg + ")";
+      return res;
     }
+    res = "url(" + currImage + ")";
+    return res;
+  };
 
-    if (props.hasOwnProperty("editItemHandler")) {
+  const clickhandler = () => {
+    props?.showItemHandler(props.item);
+  };
 
+  const editHandler = () => {
+    props.editItemHandler(props.item);
+  };
+
+  if (props.hasOwnProperty("editItemHandler")) {
     return (
-            <div className="ListItem" style={{backgroundImage: imgpbg()}}>    
-                <div className="itemContainer">
-                    <div className="editbtn" onClick={editHandler}>edit</div>
-                        <div onClick={clickhandler}>   
-                            <div className="clickableArea">
-                                 <div className="itemwrapper">
-                                    <div className="ListHeroNickname" >{props.item.nickname}</div>
-                                    <div className="ListHeroNicknamebg" ></div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-    return (
-        <div className="ListItem" style={{backgroundImage: imgpbg()}}>
-            <div onClick={clickhandler}>   
+      <div className="ListItem" style={{ backgroundImage: imgpbg() }}>
+        <div className="itemContainer">
+          <div className="editbtn" onClick={editHandler}>
+            edit
+          </div>
+          <div onClick={clickhandler}>
             <div className="clickableArea">
-                    <div className="itemwrapper">
-                        <div className="ListHeroNickname" >{props.item.nickname}</div>
-                        <div className="ListHeroNicknamebg" ></div>
-                    </div>
-                </div>
+              <div className="itemwrapper">
+                <div className="ListHeroNickname">{props.item.nickname}</div>
+                <div className="ListHeroNicknamebg"></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    );
+  }
 
-    )
-}
+  return (
+    <div className="ListItem" style={{ backgroundImage: imgpbg() }}>
+      <div onClick={clickhandler}>
+        <div className="clickableArea">
+          <div className="itemwrapper">
+            <div className="ListHeroNickname">{props.item.nickname}</div>
+            <div className="ListHeroNicknamebg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ListItem;
