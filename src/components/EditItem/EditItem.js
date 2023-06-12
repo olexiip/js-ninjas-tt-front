@@ -18,23 +18,30 @@ const EditItem = (props) => {
 
   let newImage; 
 
-  const getImage = () => {
-    api.getImage()
-  }
-
+  let images = [];
+  if (props.item.mainImg) {
+    //images.push(props.item.mainImg);
+  }  
+  images = [...images, ...props.item.images];
 
   
   const [newItem, setNewItem] = useState(props.item);
   const [selectedImage, setSelectedImage] = useState("");
  // const [mainImg, SetMainImg] = useState(props.item.mainImg);
   const onTypeHandler = (e) => {
-    setNewItem({
-      nickname: e.target.form.nickname.value,
-      realName: e.target.form.realName.value,
-      originDescription: e.target.form.originDescription.value,
-      superpowers: e.target.form.superpowers.value,
-      catchPhrase: e.target.form.catchPhrase.value,
-    });
+    const itemTemp = {
+      ...newItem,
+      ...{
+          nickname: e.target.form.nickname.value,
+          realName: e.target.form.realName.value,
+          originDescription: e.target.form.originDescription.value,
+          superpowers: e.target.form.superpowers.value,
+          catchPhrase: e.target.form.catchPhrase.value,
+          }
+      };
+
+      console.log(itemTemp);
+    setNewItem(itemTemp);
   };
 
   const onSaveImage = async (e) => {
@@ -115,6 +122,20 @@ const EditItem = (props) => {
     props.handleClose();
   };
 
+  const onDeleteImageHandler = async (index) =>  {
+    console.log(`onDeleteImageHandler ${index}`);
+    images.splice(index,1);
+    const itemTemp = {...newItem, images};
+    setNewItem(itemTemp);
+  }; 
+
+  const onSetImageHandler = async (index) =>  {
+    const itemTemp = {...newItem,mainImg:images[index]};
+    console.log(itemTemp);
+    setNewItem(itemTemp);
+    console.log(`onSetImageHandler ${index}`);
+ }; 
+
   const imgforprev = "url(" + selectedImage + ")";
 
   return (
@@ -125,17 +146,24 @@ const EditItem = (props) => {
         backdrop="static"
         keyboard={false}
       >
-        <form onSubmit={onSubmitkHandler}>
+        <form >
           <Modal.Header closeButton>
             <Modal.Title>{"editItem"}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ImgSlider item={props.item}></ImgSlider>
+
+            <ImgSlider 
+            item={newItem} 
+              onSetImageHandler={onSetImageHandler}
+              deleteHendler={onDeleteImageHandler}
+            ></ImgSlider>
+
+            <div className="inputsContainer">
             <input
               id="nickname"
               type="text"
               value={newItem.nickname}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"nickname"}
               onChange={onTypeHandler}
             />
@@ -143,7 +171,7 @@ const EditItem = (props) => {
               id="realName"
               type="text"
               value={newItem.realName}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"realName"}
               onChange={onTypeHandler}
             />
@@ -151,7 +179,7 @@ const EditItem = (props) => {
               id="originDescription"
               type="text"
               value={newItem.originDescription}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"originDescription"}
               onChange={onTypeHandler}
             />
@@ -159,7 +187,7 @@ const EditItem = (props) => {
               id="superpowers"
               type="text"
               value={newItem.superpowers}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"superpowers"}
               onChange={onTypeHandler}
             />
@@ -167,20 +195,23 @@ const EditItem = (props) => {
               id="catchPhrase"
               type="text"
               value={newItem.catchPhrase}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"catchPhrase"}
               onChange={onTypeHandler}
             />
+            
 
-            <div className="imageUploader">
+            </div>
+            <br/>
+
+            <div className="inputsContainer">
               <input
-                className="myinput"
+                className="myInput"
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
               />
-            </div>
-            <div className="form-image-container">
+           
               <div
                 className="ListItem"
                 style={{
@@ -199,17 +230,20 @@ const EditItem = (props) => {
                   </div>
                 </div>
               </div>
+                <br/>
+                <button
+                  className="login-button"
+                  onClick={onSaveImage}
+                  disabled={!selectedImage}
+                >
+                  {"upload img"}
+                </button>
+                <div className="checkboxWrapper">
+                  <input type="checkbox" id="setAsMain" defaultChecked/>
+                  <label className="mylabel" htmlFor="setAsMain">and set as main</label>
+                </div>
+       
             </div>
-            <button
-              className="mybtn"
-              onClick={onSaveImage}
-              disabled={!selectedImage}
-            >
-              {"upload img"}
-            </button>
-            <input type="checkbox" id="setAsMain" defaultChecked/>
-            <label className="mylabel" htmlFor="setAsMain">& set as main</label>
-
           </Modal.Body>
           <Modal.Footer>
             <button
@@ -222,9 +256,10 @@ const EditItem = (props) => {
             <button className="mybtn" onClick={() => props.handleClose()}>
               {"close"}
             </button>
-            <button className="mybtn" disabled={validation()}>
+            <button className="mybtn" onClick={onSubmitkHandler}>
               {"save"}
             </button>
+
           </Modal.Footer>
         </form>
       </Modal>

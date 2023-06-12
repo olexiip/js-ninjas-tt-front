@@ -39,14 +39,14 @@ const CreateItem = (props) => {
       >
         <form onSubmit={onSubmitkHandler}>
           <Modal.Header closeButton>
-            <Modal.Title>{"editItem"}</Modal.Title>
+            <Modal.Title>{"Create new"}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <input
               id="nickname"
               type="text"
               value={newItem.nickname}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"nickname"}
               onChange={onTypeHandler}
             />
@@ -54,7 +54,7 @@ const CreateItem = (props) => {
               id="realName"
               type="text"
               value={newItem.realName}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"realName"}
               onChange={onTypeHandler}
             />
@@ -62,7 +62,7 @@ const CreateItem = (props) => {
               id="originDescription"
               type="text"
               value={newItem.originDescription}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"originDescription"}
               onChange={onTypeHandler}
             />
@@ -70,7 +70,7 @@ const CreateItem = (props) => {
               id="superpowers"
               type="text"
               value={newItem.superpowers}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"superpowers"}
               onChange={onTypeHandler}
             />
@@ -78,7 +78,7 @@ const CreateItem = (props) => {
               id="catchPhrase"
               type="text"
               value={newItem.catchPhrase}
-              className="inputNewItem"
+              className="myInput"
               placeholder={"catchPhrase"}
               onChange={onTypeHandler}
             />

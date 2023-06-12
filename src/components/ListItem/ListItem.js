@@ -1,10 +1,10 @@
 import basicImg from "../img/unknown.png";
-import previmage from "../img/previmage.png";
+import previmage from "../img/loader.gif";
 import useApi from "../Hooks/useApi";
 import { useState, useEffect } from "react";
 
 const ListItem = (props) => {
-  //console.log(props)
+  console.log(props)
   const api = useApi();
 
   const [currImage, updImg] = useState(previmage);

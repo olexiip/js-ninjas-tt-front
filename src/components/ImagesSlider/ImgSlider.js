@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import useApi from "../Hooks/useApi.js";
 import unknown from "../img/unknown.png";
-import preview from "../img/previmage.png";
+import preview from "../img/loader.gif";
 
 const ImgSlider = (props) => {  
    console.log(props)
@@ -9,7 +9,7 @@ const ImgSlider = (props) => {
 
   let images = [];
   if (props.item.mainImg) {
-    images.push(props.item.mainImg);
+    //images.push(props.item.mainImg);
   }  
   images = [...images, ...props.item.images];
   // console.log(images);
@@ -176,21 +176,30 @@ const ImgSlider = (props) => {
   }
 
   const onClickSet = () => {
-    console.log("Set")
+    console.log("Set");
+    props.onSetImageHandler(currCounter);
   }
-if (false) {
-  return (
-      
+  const onClickDel = () => {
+    props.deleteHendler(currCounter);
+    console.log("Del");
+  }
+if (props.hasOwnProperty("deleteHendler")) {
+  return (  
     <div className="imgSlider">
       <div className="prevSlide" style={{ backgroundImage: imgpbgPrev() }}></div>
       <div className="currSlide" style={{ backgroundImage: imgpbg() }}>
-        <div className="SliderSet" onClick={onClickSet}>set as main</div>
-        <div className="SliderSet" onClick={onClickSet}>delete</div>
-      </div>
-      
+        <div className="clickableArea">
+          <div className="itemwrapper">
+            <div className="ListHeroNickname">{props.item.nickname}</div>
+            <div className="ListHeroNicknamebg"></div>
+          </div>
+        </div>
+        <div className="SliderBtn SliderDel " onClick={onClickSet}>set as main</div>
+        <div className="SliderBtn SliderSet" onClick={onClickDel}>delete</div>
+      </div>      
       <div className="nextSlide" style={{ backgroundImage: imgpbgNext() }}></div>
-      <div className="SliderBtn SliderL" onClick={()=>onClickLeft()}>{"prev"}</div>
-      <div className="SliderBtn SliderR" onClick={()=>onClickRight()}>{"next"}</div>
+      <div className="SliderArrow SliderL" onClick={()=>onClickLeft()}>{"prev"}</div>
+      <div className="SliderArrow SliderR" onClick={()=>onClickRight()}>{"next"}</div>
     </div>
   )
 }
@@ -206,8 +215,8 @@ return (
       </div>
     </div>
     <div className="nextSlide" style={{ backgroundImage: imgpbgNext() }}></div>
-    <div className="SliderBtn SliderL" onClick={()=>onClickLeft()}>{"prev"}</div>
-  <div className="SliderBtn SliderR" onClick={()=>onClickRight()}>{"next"}</div>    
+    <div className="SliderArrow SliderL" onClick={()=>onClickLeft()}>{"prev"}</div>
+  <div className="SliderArrow SliderR" onClick={()=>onClickRight()}>{"next"}</div>    
 </div>
     )
 }
