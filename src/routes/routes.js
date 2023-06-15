@@ -1,11 +1,11 @@
 import { Route, Routes, Navigate } from "react-router-dom"
-import LoginForm from "./components/Login/login.js";
-import RegisterForm from "./components/Register/register.js";
-import List from "./components/List/List.js";
-import HomePage from "./components/Homepage/Homepage.js";
-import Layout from "../src/components/Header/Header.js"
-import ProtectedRouter from "./components/ProtectedRoutes/ProtectedRouter.js";
-import UserPage from "../src/components/UserPage/UserPage.js";
+import LoginForm from "../pages/Login/login.js";
+import RegisterForm from "../pages/Register/register.js";
+import List from "../pages/List/List.js";
+import HomePage from "../pages/Homepage/Homepage.js";
+import Layout from "../components/Header/Header.js"
+import ProtectedRouter from "../routes/ProtectedRouter.js";
+import UserPage from "../pages/UserPage/UserPage.js";
 
 const MyRoutes = () => {
     return (

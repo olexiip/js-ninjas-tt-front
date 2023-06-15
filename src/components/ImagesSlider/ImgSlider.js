@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import useApi from "../Hooks/useApi.js";
-import unknown from "../img/unknown.png";
-import preview from "../img/loader.gif";
+import useApi from "../../hooks/useApi.js";
+import unknown from "../../img/unknown.png";
+import preview from "../../img/loader.gif";
 
 const ImgSlider = (props) => {  
    console.log(props)

@@ -1,6 +1,6 @@
-import { useAuth } from "../Hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth.js";
 import { NavLink } from "react-router-dom";
-import useApi from "../Hooks/useApi";
+import useApi from "../../hooks/useApi.js";
 
 
 const Usermenu = (props) => {

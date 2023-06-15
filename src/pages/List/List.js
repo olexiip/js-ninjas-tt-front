@@ -1,11 +1,11 @@
-import ListItem from "../ListItem/ListItem.js";
-import EditItem from "../EditItem/EditItem.js";
-import ShowItem from "../ShowItemModal/ShowItem.js";
+import ListItem from "../../components/ListItem/ListItem.js";
+import EditItem from "../../components/EditItem/EditItem.js";
+import ShowItem from "../../components/ShowItemModal/ShowItem.js";
 import React, { useState, useEffect } from "react";
-import CreateItem from "../CreateItem/CreateItem.js";
-import useApi from "../Hooks/useApi.js";
-import Pages from "../Pagination/pagination.js";
-import basicImg from "../img/plus.png";
+import CreateItem from "../../components/CreateItem/CreateItem.js";
+import useApi from "../../hooks/useApi.js";
+import Pages from "../../components/Pagination/pagination.js";
+import basicImg from "../../img/plus.png";
 
 const List = () => {
   const api = useApi();

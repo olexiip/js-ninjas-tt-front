@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useApi from "../Hooks/useApi";
 import { useNavigate } from "react-router-dom";
+import useApi from "../../hooks/useApi.js";
 
 const RegisterForm = () => {
     const api = useApi();

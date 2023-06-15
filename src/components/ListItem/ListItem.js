@@ -1,6 +1,6 @@
-import basicImg from "../img/unknown.png";
-import previmage from "../img/loader.gif";
-import useApi from "../Hooks/useApi";
+import basicImg from "../../img/unknown.png";
+import previmage from "../../img/loader.gif";
+import useApi from "../../hooks/useApi.js";
 import { useState, useEffect } from "react";
 
 const ListItem = (props) => {

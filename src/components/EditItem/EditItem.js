@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import imageCompression from "browser-image-compression";
 import ImgSlider from "../ImagesSlider/ImgSlider";
-import useApi from "../Hooks/useApi.js";
+import useApi from "../../hooks/useApi.js";
 
 const EditItem = (props) => {
   const api = useApi();

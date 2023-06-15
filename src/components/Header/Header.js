@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Usermenu from "../UserMenu/UserMenu.js";
 import { NavLink } from "react-router-dom";
-import useApi from "../Hooks/useApi.js";
 import { useState, useEffect } from "react";
-import { useAuth } from "../Hooks/useAuth.js";
+import { useAuth } from "../../hooks/useAuth.js";
+import useApi from "../../hooks/useApi.js";
 
 import "./styles.css"
 

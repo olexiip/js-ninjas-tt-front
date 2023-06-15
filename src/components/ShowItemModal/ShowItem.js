@@ -1,5 +1,5 @@
 import { Modal } from "react-bootstrap";
-import basicImg from "../img/unknown.png";
+import basicImg from "../../img/unknown.png";
 import ImgSlider from "../ImagesSlider/ImgSlider";
 
 const ShowItem = (props) => {

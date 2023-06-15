@@ -1,6 +1,6 @@
-import { useAuth } from "../Hooks/useAuth.js";
+import { useAuth } from "../../hooks/useAuth.js";
 import { useState } from "react";
-import useApi from "../Hooks/useApi.js";
+import useApi from "../../hooks/useApi.js";
 
 
 const LoginForm = () => {

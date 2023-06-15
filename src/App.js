@@ -1,6 +1,6 @@
-import MyRoutes from './routes';
+import MyRoutes from './routes/routes.js';
 import './App.css';
-import { ProvideAuth } from './components/Hooks/useAuth';
+import { ProvideAuth } from './hooks/useAuth.js';
 function App() {
   return (
     <ProvideAuth>

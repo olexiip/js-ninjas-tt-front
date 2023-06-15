@@ -1,8 +1,9 @@
-import ListItem from "../ListItem/ListItem.js"
-import ShowItem from "../ShowItemModal/ShowItem.js"
+
 import React, {useState, useEffect} from "react";
-import useApi from "../Hooks/useApi.js";
-import Pages from '../Pagination/pagination.js';
+import ListItem from "../../components/ListItem/ListItem.js"
+import ShowItem from "../../components/ShowItemModal/ShowItem.js"
+import useApi from "../../hooks/useApi.js";
+import Pages from '../../components/Pagination/pagination.js';
 
 const List = () => {  
   const api = useApi();
